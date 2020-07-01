@@ -1,7 +1,7 @@
 import React from 'react'
 
 //Importando Classes do BootStrap
-import { Button, Form, FormControl, Navbar, Brand, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css'
 
 export default () =>
