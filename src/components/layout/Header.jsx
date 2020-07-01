@@ -1,19 +1,25 @@
 import React from 'react'
 
+//Importando Classes do BootStrap
+import { Button, Form, FormControl, Navbar, Brand, Nav, NavDropdown } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css'
+
 export default () =>
     <header>
-        {/*Imagem de logo*/}
-        <img></img>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
 
-        {/*Campo para a busca*/}        
-        <form>
-            <label>
-                Busca:
-                <input type="text" name="name" />
-            </label>
-            <input type="submit" value="Enviar" />
-        </form>
-        
-        {/*Botão para troca de tema*/}
-        <button></button>
+            {/*logo*/}
+            <Navbar.Brand href="#home">ToDoList</Navbar.Brand>
+
+            {/*Componentes para Responsividade*/}
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+
+                {/*Botão mudar o tema*/}
+                    {/*Criar componente para mudar tema*/}
+
+                {/*Campo para a busca*/}
+                    {/*Criar componente de Busca*/}
+            </Navbar.Collapse>
+        </Navbar>
     </header>
