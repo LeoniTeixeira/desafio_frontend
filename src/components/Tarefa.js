@@ -4,14 +4,14 @@ export default class Tarefa extends Component {
     render() {
         return (
             <li className='list-group-item text-capitalize d-flex 
-              justify-content-between my-4 flex-wrap'>
+              flex-wrap justify-content-between my-2'>
                 <input type="checkbox" className='my-auto'/>
                 <h6 className='my-auto'>descricao</h6>
-                <div className='my-auto'>
+                <div >
                     <button type='submit' className='btn btn-success 
-                      my-auto text-capitalize'>editar</button>
+                      text-capitalize'>editar</button>
                     <button type='submit' className='btn btn-danger 
-                      ml-1 my-auto text-capitalize'>Apagar</button>
+                      ml-1 text-capitalize'>apagar</button>
                 </div>
             </li>
         )
