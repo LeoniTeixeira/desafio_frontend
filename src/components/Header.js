@@ -5,8 +5,11 @@ export default props => (
         <div className='d-flex justify-content-between'>
             <h4 className='text-light my-auto'>To Do List</h4>
             <div>
-                <span className='text-light my-auto btn btn-primary'>Exportar</span>{/*Botão Exportar*/}
-                <span className='text-light my-auto btn btn-primary'>Tema</span>{/*Botão Mudar Tema*/}
+                <span className='text-light my-auto btn btn-primary'>
+                  Exportar</span>{/*Botão Exportar*/}
+                  
+                <span className='text-light my-auto btn btn-primary'>
+                  Tema</span>{/*Botão Mudar Tema*/}
             </div>
         </div>
     </header>

@@ -7,14 +7,14 @@ export default props => (
         <input type="checkbox" className='my-auto'/>
 
         {/*Descrição da tarefa*/}
-        <h6 className='my-auto'>descricao</h6>
+        <span className='my-auto col-sm-9'>descricao</span> 
 
         {/*Botões de Editar e Apagar Tarefa*/}
         <div>
-            <button type='submit' className='btn btn-success 
-              text-capitalize'>editar</button>
-            <button type='submit' className='btn btn-danger 
-              ml-1 text-capitalize'>apagar</button>
+            <button type='submit' className='btn btn-success px-3'>
+                Editar</button>
+            <button type='submit' className='btn btn-danger ml-1'>
+                Apagar</button>
         </div>
     </li>
 )
