@@ -6,7 +6,10 @@ export default class Header extends Component {
                 <header className='container-fluid py-3 bg-primary shadow-lg '>
                     <row className='d-flex justify-content-between'>
                         <h4 className='text-light my-auto'>To Do List</h4>
-                        <h4 className='text-light my-auto btn'>Tema</h4>
+                        <div>
+                            <span className='text-light my-auto btn btn-primary'>Exportar</span>
+                            <span className='text-light my-auto btn btn-primary'>Tema</span>
+                        </div>
                     </row>
                 </header>
         )
