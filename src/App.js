@@ -2,9 +2,22 @@ import React, { Component } from 'react'
 import Header from './components/Header'
 import NovaTarefa from './components/NovaTarefa'
 import ListarTarefa from './components/ListarTarefa'
-import 'bootstrap/dist/css/bootstrap.min.css'
+
+//Classes Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+//Config IndexedDB
+import IndexedDB from './data/IndexedDB';
+
 
 export default class App extends Component {
+    componentDidMount() {
+        IndexedDB.table('tarefas')
+          .toArray()
+          .then((tarefas) => {
+            this.setState({ tarefas });
+          });
+      }
+
     render() {
         return (
             <>
