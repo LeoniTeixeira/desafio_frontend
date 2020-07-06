@@ -1,7 +1,7 @@
 import React from 'react'
 import Tarefa from './Tarefa';
 
-const ListarTarefa = ({ lista, handleDeleteTarefa }) => 
+const ListarTarefa = ({ lista, handleDeleteTarefa, handleToggleTarefa }) => 
     <div>
         <form className='d-flex flex-wrap px-0 mx-0 mb-3'>
             {/*Filtro por termo na tarefa*/}
@@ -18,11 +18,12 @@ const ListarTarefa = ({ lista, handleDeleteTarefa }) =>
                 </select>
             </label>
         </form>
-        <ul className='list-group'>
+        <ul className='list-group mb-5'>
             {lista.map((tarefa) => <Tarefa
             key={tarefa.id}
             {...tarefa}
             handleDeleteTarefa={handleDeleteTarefa}
+            handleToggleTarefa={handleToggleTarefa}
             />)}
         </ul>
     </div>;

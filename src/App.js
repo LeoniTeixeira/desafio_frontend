@@ -14,6 +14,7 @@ export default class App extends Component {
         this.state = { lista: [] };
         this.handleAddTarefa = this.handleAddTarefa.bind(this);
         this.handleDeleteTarefa = this.handleDeleteTarefa.bind(this);
+        this.handleToggleTarefa = this.handleToggleTarefa.bind(this);
     }
 
     componentDidMount() {
@@ -61,6 +62,19 @@ export default class App extends Component {
         });
     }
 
+    handleToggleTarefa(id, descricao, status) {
+        const tarefa = {
+          id: id,
+          descricao: descricao,
+          status: !status,
+        };
+        const temp=JSON.parse(localStorage.getItem('lista'));
+        const lista = temp.filter(tarefa => tarefa.id !== id);
+        lista.push(tarefa);
+        localStorage.setItem('lista',JSON.stringify(lista));
+        this.setState({lista:JSON.parse(localStorage.getItem('lista'))});
+    }
+
     render() {
         return (
             <>
@@ -71,6 +85,7 @@ export default class App extends Component {
                             <h3 className='text-capitalize text-center'>Lista de Tarefas</h3>
                             <NovaTarefa handleAddTarefa={this.handleAddTarefa}/>
                             <ListarTarefa lista={this.state.lista}
+                             handleToggleTarefa={this.handleToggleTarefa}
                              handleDeleteTarefa={this.handleDeleteTarefa}
                             />
                         </div>
