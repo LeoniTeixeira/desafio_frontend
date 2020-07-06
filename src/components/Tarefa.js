@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const Tarefa = ({descricao, id, status}) => 
+const Tarefa = ({descricao, id, status, handleDeleteTarefa}) => 
             <li className='list-group-item text-capitalize d-flex 
               flex-wrap justify-content-between'>
                 {/*Status da Tarefa 'Feita(true)/Pendente(false)'*/}
@@ -13,7 +13,8 @@ const Tarefa = ({descricao, id, status}) =>
                 <div>
                     <button type='submit' className='btn btn-success px-3'>
                         Editar</button>
-                    <button type='submit' className='btn btn-danger ml-1'>
+                    <button type='submit' className='btn btn-danger ml-1'
+                        onClick={() => handleDeleteTarefa(id)}>
                         Apagar</button>
                 </div>
             </li>;

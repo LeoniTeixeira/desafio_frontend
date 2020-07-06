@@ -13,6 +13,7 @@ export default class App extends Component {
         super();
         this.state = { lista: [] };
         this.handleAddTarefa = this.handleAddTarefa.bind(this);
+        this.handleDeleteTarefa = this.handleDeleteTarefa.bind(this);
     }
 
     componentDidMount() {
@@ -50,6 +51,15 @@ export default class App extends Component {
         });
     }
 
+    handleDeleteTarefa(id) {
+        const temp=JSON.parse(localStorage.getItem('lista'));
+        const filteredItems = temp.filter(tarefa => tarefa.id !== id);
+        localStorage.setItem('lista',JSON.stringify(filteredItems));
+        
+        this.setState({
+            lista:JSON.parse(localStorage.getItem('lista'))
+        });
+    }
 
     render() {
         return (
@@ -60,7 +70,9 @@ export default class App extends Component {
                         <div className='mx-auto col-md-8 mt-4'>
                             <h3 className='text-capitalize text-center'>Lista de Tarefas</h3>
                             <NovaTarefa handleAddTarefa={this.handleAddTarefa}/>
-                            <ListarTarefa lista={this.state.lista}/>
+                            <ListarTarefa lista={this.state.lista}
+                             handleDeleteTarefa={this.handleDeleteTarefa}
+                            />
                         </div>
                     </div>
                 </main>
