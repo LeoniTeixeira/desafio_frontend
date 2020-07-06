@@ -3,6 +3,8 @@ import Header from './components/Header'
 import NovaTarefa from './components/NovaTarefa'
 import ListarTarefa from './components/ListarTarefa'
 
+import { v4 as uuidv4 } from 'uuid';
+
 //Classes Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,8 +17,9 @@ export default class App extends Component {
 
     handleAddTarefa(descricao) {
         const tarefas = {
-          descricao,
-          status: false,
+            id:uuidv4(), 
+            descricao,
+            status: false,
         };
         if(localStorage.getItem('lista')==null){
             const lista=[]
