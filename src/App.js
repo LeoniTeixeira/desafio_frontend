@@ -5,9 +5,6 @@ import ListarTarefa from './components/ListarTarefa'
 
 //Classes Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
-//Config IndexedDB
-import IndexedDB from './data/IndexedDB';
-
 
 export default class App extends Component {
     constructor() {
@@ -16,24 +13,23 @@ export default class App extends Component {
         this.handleAddTarefa = this.handleAddTarefa.bind(this);
     }
 
-    componentDidMount() {
-        IndexedDB.table('tarefas')
-          .toArray()
-          .then((tarefas) => {
-            this.setState({ tarefas });
-        });
-    }
-
     handleAddTarefa(descricao) {
-        const tarefa = {
+        const tarefas = {
           descricao,
           status: false,
         };
-        IndexedDB.table('tarefas')
-          .add(tarefa)
-          .then((id) => {
-            const newList = [...this.state.todos, Object.assign({}, tarefa, { id })];
-            this.setState({ tarefas: newList });
+        if(localStorage.getItem('lista')==null){
+            const lista=[]
+            lista.push(tarefas);
+            localStorage.setItem("lista",JSON.stringify(lista))
+        }
+        else{
+            const lista=JSON.parse(localStorage.getItem('lista'))
+            lista.push(tarefas)
+            localStorage.setItem("lista",JSON.stringify(lista))
+        }
+        this.setState({
+            lista:JSON.parse(localStorage.getItem('lista'))
         });
     }
 
