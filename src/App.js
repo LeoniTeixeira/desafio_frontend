@@ -11,30 +11,45 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default class App extends Component {
     constructor() {
         super();
-        this.state = { tarefas: [] };
+        this.state = { lista: [] };
         this.handleAddTarefa = this.handleAddTarefa.bind(this);
     }
 
+    componentDidMount() {
+        const lista = window.localStorage.getItem('lista');
+        const parsedList = JSON.parse(lista);
+        if(lista == null){
+            return false
+        }
+        else{
+            this.setState({
+                lista: parsedList,
+            })
+            console.log(this.state.lista);
+        }
+    }
+
     handleAddTarefa(descricao) {
-        const tarefas = {
+        const tarefa = {
             id:uuidv4(), 
             descricao,
             status: false,
         };
         if(localStorage.getItem('lista')==null){
             const lista=[]
-            lista.push(tarefas);
-            localStorage.setItem("lista",JSON.stringify(lista))
+            lista.push(tarefa);
+            localStorage.setItem('lista',JSON.stringify(lista))
         }
         else{
             const lista=JSON.parse(localStorage.getItem('lista'))
-            lista.push(tarefas)
-            localStorage.setItem("lista",JSON.stringify(lista))
+            lista.push(tarefa)
+            localStorage.setItem('lista',JSON.stringify(lista))
         }
         this.setState({
             lista:JSON.parse(localStorage.getItem('lista'))
         });
     }
+
 
     render() {
         return (
@@ -45,7 +60,7 @@ export default class App extends Component {
                         <div className='mx-auto col-md-8 mt-4'>
                             <h3 className='text-capitalize text-center'>Lista de Tarefas</h3>
                             <NovaTarefa handleAddTarefa={this.handleAddTarefa}/>
-                            <ListarTarefa/>
+                            <ListarTarefa lista={this.state.lista}/>
                         </div>
                     </div>
                 </main>
