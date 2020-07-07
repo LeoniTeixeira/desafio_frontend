@@ -17,6 +17,7 @@ export default class App extends Component {
         this.handleToggleTarefa = this.handleToggleTarefa.bind(this);
     }
 
+    //exibe as atualizações na lista de tarefas
     componentDidMount() {
         const lista = window.localStorage.getItem('lista');
         const parsedList = JSON.parse(lista);
@@ -37,11 +38,15 @@ export default class App extends Component {
             descricao,
             status: false,
         };
+        //verifica se o local storage está vazio, se sim copia  
+        //os dados da tarefa para o localStorage
         if(localStorage.getItem('lista')==null){
             const lista=[]
             lista.push(tarefa);
             localStorage.setItem('lista',JSON.stringify(lista))
         }
+        //se não, copia a lista de tarefas do localStorage e 
+        //injeta a nova tarefa
         else{
             const lista=JSON.parse(localStorage.getItem('lista'))
             lista.push(tarefa)
@@ -52,6 +57,7 @@ export default class App extends Component {
         });
     }
 
+    //copia a lista filtrando o id a ser deletado
     handleDeleteTarefa(id) {
         const temp=JSON.parse(localStorage.getItem('lista'));
         const filteredItems = temp.filter(tarefa => tarefa.id !== id);
@@ -62,6 +68,7 @@ export default class App extends Component {
         });
     }
 
+    //recria a tarefa invertendo o valor booleano do status 
     handleToggleTarefa(id, descricao, status) {
         const tarefa = {
           id: id,

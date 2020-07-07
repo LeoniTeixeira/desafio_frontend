@@ -13,7 +13,7 @@ const Tarefa = ({descricao, id, status, handleDeleteTarefa, handleToggleTarefa})
 
                 {/*Botões de Editar e Apagar Tarefa*/}
                 <div>
-                    <button type='submit' className='btn btn-success px-3'>
+                    <button type='submit'disabled className='btn btn-success px-3'>
                         Editar</button>
                     <button type='submit' className='btn btn-danger ml-1'
                         onClick={() => handleDeleteTarefa(id)}>
